@@ -48,7 +48,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.definirValores(posicao.linha, posicao.coluna + 1);
+                pos.definirValores(pos.linha, pos.coluna + 1);
             }
 
             //acima
@@ -60,7 +60,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.definirValores(posicao.linha - 1, posicao.coluna);
+                pos.definirValores(pos.linha - 1, pos.coluna);
             }
 
             //abaixo
@@ -72,7 +72,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.definirValores(posicao.linha + 1, posicao.coluna);
+                pos.definirValores(pos.linha + 1, pos.coluna);
             }
 
             //NO
