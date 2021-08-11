@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using tabuleiro;
 
 namespace xadrez
@@ -149,9 +150,10 @@ namespace xadrez
                 {
                     p = tab.retirarPeca(destino);
                     pecas.Remove(p);
-                    Peca dama = new Dama(tab,p.cor);
+                    promocaoPeao(tab, destino, p.cor);
+                    /*Peca dama = new Dama(tab,p.cor);
                     tab.colocarPeca(dama, destino);
-                    pecas.Add(dama);
+                    pecas.Add(dama);*/
                 }
             }
 
@@ -323,6 +325,36 @@ namespace xadrez
                 }
             }
             return true;
+        }
+
+        private void promocaoPeao(Tabuleiro tab, Posicao destino, Cor cor)
+        {
+            Console.WriteLine("Digite a peça que deseja(D, T, C, B): ");
+            char pecaEscolhida = char.Parse(Console.ReadLine().ToUpper());
+
+            switch(pecaEscolhida)
+            {
+                case 'D':
+                    Peca dama = new Dama(tab, cor);
+                    tab.colocarPeca(dama, destino);
+                    pecas.Add(dama);
+                    break;
+                case 'T':
+                    Peca torre = new Torre(tab, cor);
+                    tab.colocarPeca(torre, destino);
+                    pecas.Add(torre);
+                    break;
+                case 'C':
+                    Peca cavalo = new Cavalo(tab, cor);
+                    tab.colocarPeca(cavalo, destino);
+                    pecas.Add(cavalo);
+                    break;
+                case 'B':
+                    Peca bispo = new Bispo(tab, cor);
+                    tab.colocarPeca(bispo, destino);
+                    pecas.Add(bispo);
+                    break;
+            }
         }
 
         public void colocarNovaPeca(char coluna, int linha, Peca peca)
